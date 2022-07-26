@@ -1,0 +1,79 @@
+@mixin effect($name, $kf) {
+  @keyframes #{$name} {
+    @each $interval, $transform in $kf {
+      #{percentage(calc($interval/$total-kf))} {
+        transform: $transform;
+      }
+    }
+  }
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $color;
+    -moz-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin border-radius($radius) {
+  background-clip: padding-box;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin underline($line-width) {
+  color: $main;
+  position: relative;
+  &:after {
+    @include transition;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: $main;
+    height: $line-width;
+    transition-property: left, right;
+    transition-duration: 0.2s;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    &:after {
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+@mixin inline-link {
+  border-bottom: 1px solid $main;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $main;
+  }
+}
+@mixin transition {
+  transition: all 0.2s $easing;
+}

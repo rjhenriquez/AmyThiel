@@ -1,0 +1,55 @@
+// MINOR THIRD FONT SIZES
+
+// @include font-size(5) = 39.81px
+// @include font-size(4) = 33.18px
+// @include font-size(3) = 27.65px
+// @include font-size(2) = 23.04px
+// @include font-size(1) = 19.20px
+// @include font-size(0) = 16px;
+
+// Font Family Weight Options:
+
+// light, book, roman:, medium, black
+// @include font-weight(option);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $headerColor;
+}
+h1,
+h2 {
+  @include font-weight(book);
+}
+h1 {
+  @include font-size(4);
+  line-height: 1.4;
+}
+h2 {
+  @include font-size(3);
+  line-height: 1.4;
+}
+h3 {
+  @include font-size(2);
+  margin-bottom: 1.4rem;
+}
+h4 {
+  @include font-weight(roman);
+  @include font-size(1);
+  margin-bottom: 1.4rem;
+}
+h5 {
+  @include font-size(1);
+}
+
+p,
+li,
+address {
+  line-height: 1.8;
+}
+strong {
+  @include font-weight(roman);
+}

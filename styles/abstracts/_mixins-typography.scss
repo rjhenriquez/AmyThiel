@@ -1,0 +1,87 @@
+$fonts-path: "/fonts";
+
+@each $font-name,
+  $map
+    in (
+      AvenirLight: (
+        filehandle: Avenir-Light,
+      ),
+      AvenirBook: (
+        filehandle: Avenir-Book,
+      ),
+      AvenirRoman: (
+        filehandle: Avenir-Roman,
+      ),
+      AvenirMedium: (
+        filehandle: Avenir-Medium,
+      ),
+      AvenirBlack: (
+        filehandle: Avenir-Black,
+      )
+    )
+{
+  @font-face {
+    $fonts-path: $fonts-path;
+    $f: map-get($map, filehandle);
+    font-family: $font-name;
+    src: url("#{$fonts-path}/#{$f}.woff") format("woff"),
+      url("#{$fonts-path}/#{$f}.woff2") format("woff2"),
+      url("#{$fonts-path}/#{$f}.ttf") format("truetype"),
+      url("#{$fonts-path}/#{$f}.svg#{$fonts-path}") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    @each $attr, $value in map-remove($map, filehandle) {
+      #{$attr}: $value;
+    }
+  }
+}
+
+@mixin font-weight($family-shorthand) {
+  $weight-stacks: (
+    light: (
+      "AvenirLight",
+    ),
+    book: (
+      "AvenirBook",
+    ),
+    roman: (
+      "AvenirRoman",
+    ),
+    medium: (
+      "AvenirMedium",
+    ),
+    black: (
+      "AvenirBlack",
+    ),
+  );
+
+  $fallback-stack: (
+    "HelveticaNeue",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    Roboto,
+    sans-serif
+  );
+
+  font-family: join(
+    map-get($weight-stacks, $family-shorthand),
+    $fallback-stack
+  );
+}
+
+@mixin color-dark-on-light($color, $important: "") {
+  color: $color unquote($important);
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin color-light-on-dark($color, $important: "") {
+  color: $color unquote($important);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
