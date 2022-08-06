@@ -18,7 +18,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $headerColor;
+  color: $bodyColor;
 }
 h1,
 h2 {
@@ -27,6 +27,7 @@ h2 {
 h1 {
   @include font-size(4);
   line-height: 1.4;
+  margin: 0 0 2rem;
 }
 h2 {
   @include font-size(3);
@@ -49,6 +50,7 @@ p,
 li,
 address {
   line-height: 1.8;
+  margin: 0 0 2rem;
 }
 strong {
   @include font-weight(roman);

@@ -1,4 +1,12 @@
 $nav-item-height: 48px;
 
 header {
+  height: $headerHeight;
+  background: $backgroundDark;
+  nav {
+    display: flex;
+  }
+  .nav-items {
+    display: flex;
+  }
 }

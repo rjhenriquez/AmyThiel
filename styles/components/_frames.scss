@@ -1,0 +1,16 @@
+.img-frame {
+  position: absolute;
+  display: block;
+  bottom: 5%;
+  right: -10px;
+  width: 3px;
+  height: 60%;
+  &-1 {
+    background-color: $blue7;
+  }
+  &-2 {
+    background-color: $blue7;
+    right: 10px;
+    bottom: 10%;
+  }
+}
